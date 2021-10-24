@@ -6,8 +6,6 @@ const routes = express.Router();
 const upload = multer(uploadConfig);
 
 const Banner = require('./controllers/BannerController');
-const About = require('./controllers/AboutController');
-const Category = require('./controllers/CategoriesController');
 const Activity = require('./controllers/ActivitiesController');
 const User = require('./controllers/UsersController');
 const File = require('./controllers/FileController');
@@ -18,12 +16,6 @@ routes.get('/api/banner',  Banner.list);
 routes.delete('/api/banner', Banner.delete);
 routes.put('/api/banner', Banner.update);
 
-routes.post('/api/about', upload.single('image'), About.create);
-routes.get('/api/about', About.list);
-
-routes.post('/api/category', upload.single('image'), Category.create);
-routes.post('/api/category/find',Category.find);
-routes.get('/api/category', Category.list);
 
 routes.post('/activity', Activity.create);
 routes.get('/activity',Activity.find);
