@@ -1,5 +1,5 @@
 {
-  "name": "backend-ana-lugli-fotografia",
+  "name": "participei-na-utfpr-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beatrizsabbatini/backend-ana-lugli-fotografia.git"
+    "url": "git+https://github.com/beatrizsabbatini/participei-na-utfpr-backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/beatrizsabbatini/backend-ana-lugli-fotografia/issues"
+    "url": "https://github.com/beatrizsabbatini/participei-na-utfpr-backend/issues"
   },
-  "homepage": "https://github.com/beatrizsabbatini/backend-ana-lugli-fotografia#readme",
+  "homepage": "https://github.com/beatrizsabbatini/participei-na-utfpr-backend#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",

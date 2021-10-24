@@ -5,7 +5,6 @@ module.exports = {
 
     async list(req, res){
         const { query } = req.body;
-        console.log('query', query);
 
         const directoryPath = path.join(__dirname, '..', '..', 'uploads');
 
