@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const ActivitySchema = new mongoose.Schema({
+    id: {
+      type: String,
+      required: true
+    },
     title: {
         type: String,
         required: true,
@@ -17,17 +21,11 @@ const ActivitySchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    categoryGroup: {
-      type: String,
-      required: true,
-    },
-    categoryName: {
-      type: String,
-      required: true,
-    },
-    categoryPoints: {
-      type: String,
-      required: true,
+    category: {
+      id: { type: String, required: true },
+      group: { type: Number, required: true },
+      label: { type: String, required: true },
+      points: { type: Number, required: true }
     },
     certificate: {
       type: String,

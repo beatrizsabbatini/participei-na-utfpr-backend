@@ -1,10 +1,16 @@
+const { v4: uuid } = require('uuid');
 const Activity = require('../models/Activity');
 
 module.exports = {
 
     async create(req, res){
-        const {title} = req.body; 
-        const activityItem = await Activity.create({title});
+        const body = req.body; 
+
+        const activityWithUuid = {
+            ...body,
+            id: uuid()
+        }
+        const activityItem = await Activity.create(activityWithUuid);
 
         return res.json(activityItem)
     }, 
