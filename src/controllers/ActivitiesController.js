@@ -15,24 +15,22 @@ module.exports = {
         return res.json(activityItem)
     }, 
 
-    async find(req, res){
+    async list(req, res){
         const { title } = req.query; 
         const regex = new RegExp(title, 'i') // i for case insensitive
-        const activities = await Activity.find({title: {$regex: regex}})
+        let activities = await Activity.find();
 
         if(activities){
-           return res.json({activities});
+            if (title){
+                const filteredActivities = await Activity.find({title: {$regex: regex}});
+                return res.json({activities: filteredActivities});
+            } else {
+                return res.json({activities});
+            }
         }
         else{
             res.json({mensagem: 'Não foi possivel encontrar'});
         }
-    }, 
-
-    async list(req, res){
-
-        let activityItems = await Activity.find();
-
-        return res.json(activityItems)
     }, 
 
 

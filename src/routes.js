@@ -18,7 +18,6 @@ routes.put('/api/banner', Banner.update);
 
 
 routes.post('/activity', Activity.create);
-routes.get('/activity',Activity.find);
 routes.get('/activities', Activity.list);
 
 routes.post('/user', User.create);
