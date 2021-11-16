@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    uid: {
+    id: {
       type: String,
       required: true,
     },
@@ -21,11 +21,11 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: false,
     },
-    publishedActivities: {
+    publishedActivitiesIds: {
       type: [String],
       required: false,
     },
-    savedActivities: {
+    savedActivitiesIds: {
       type: [String],
       required: false,
     },

@@ -16,22 +16,68 @@ module.exports = {
     }, 
 
     async list(req, res){
-        const { title } = req.query; 
+        const { title, groups } = req.query; 
         const regex = new RegExp(title, 'i') // i for case insensitive
         let activities = await Activity.find();
 
         if(activities){
             if (title){
-                const filteredActivities = await Activity.find({title: {$regex: regex}});
-                return res.json({activities: filteredActivities});
-            } else {
-                return res.json({activities});
+              const filteredActivitiesByTitle = await Activity.find({title: {$regex: regex}});
+              activities = filteredActivitiesByTitle;
+            } 
+            if (groups){
+              if (groups.length > 0){
+                const filteredActivitiesByGroups = activities.filter(activity => (
+                  groups.includes(activity.category.group.toString()))
+                );
+                
+                activities = filteredActivitiesByGroups;
+              }
             }
+            
+            return res.json({activities});
+  
         }
         else{
             res.json({mensagem: 'Não foi possivel encontrar'});
         }
     }, 
+
+    async listByIds(req, res){
+      const { ids } = req.body; 
+      let activities = await Activity.find();
+
+      if (ids){
+        if (ids.length > 0){
+          const filteredActivitiesByIds = activities.filter(activity => ids.includes(activity.id));
+          activities = filteredActivitiesByIds;
+
+        } else {
+          activities = []
+        }
+        
+      } else{
+        activities = []
+      }
+
+      return res.json(activities);
+    }, 
+
+    async update(req, res){
+      const { id } = req.query;
+      const data = req.body;
+
+      console.log("ID: ", id);
+      console.log("Data: ", data);
+
+      try {
+        const activityUpdated = await Activity.findOneAndUpdate(({id}, data));
+
+        return res.json(activityUpdated)
+      } catch (error) {
+        return res.json(error)
+      }
+    }
 
 
 }

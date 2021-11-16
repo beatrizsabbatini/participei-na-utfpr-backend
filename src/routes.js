@@ -16,11 +16,13 @@ routes.get('/api/banner',  Banner.list);
 routes.delete('/api/banner', Banner.delete);
 routes.put('/api/banner', Banner.update);
 
-
 routes.post('/activity', Activity.create);
+routes.patch('/activities', Activity.update);
 routes.get('/activities', Activity.list);
+routes.post('/activities', Activity.listByIds);
 
 routes.post('/user', User.create);
+routes.patch('/users', User.update);
 routes.get('/user',User.find);
 routes.get('/users', User.list);
 
