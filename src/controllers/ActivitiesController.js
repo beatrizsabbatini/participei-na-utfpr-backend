@@ -60,15 +60,13 @@ module.exports = {
         activities = []
       }
 
+
       return res.json(activities);
     }, 
 
     async update(req, res){
       const { id } = req.query;
       const data = req.body;
-
-      console.log("ID: ", id);
-      console.log("Data: ", data);
 
       try {
         const activityUpdated = await Activity.findOneAndUpdate(({id}, data));

@@ -10,11 +10,11 @@ module.exports = {
     }, 
 
     async update(req, res){
-      const { id } = req.params;
+      const { _id } = req.query;
       const data = req.body;
 
       try {
-        const userUpdated = await User.findOneAndUpdate(({id}, data));
+        const userUpdated = await User.findByIdAndUpdate(_id, data);
 
         return res.json(userUpdated)
       } catch (error) {
@@ -24,10 +24,10 @@ module.exports = {
   }, 
 
     async find(req, res){
-        const { id } = req.query; 
+        const { uid } = req.query; 
 
         try {
-          const user = await User.findOne({ id });
+          const user = await User.findOne({ uid });
           if (!user) throw new Error('User not found');
           return res.json(user);
 
