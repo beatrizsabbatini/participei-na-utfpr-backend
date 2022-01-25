@@ -10,8 +10,38 @@ module.exports = {
     }, 
 
     async update(req, res){
-      const { _id } = req.query;
-      const data = req.body;
+      const { _id, activityId } = req.query;
+
+      let data = req.body;
+
+      if (req.file){
+        const { originalName: name, key, location: url = `${process.env.APP_URL}/files/${key}` } = req.file;
+        const file = {
+          name,
+          key,
+          url
+        }
+
+        if (activityId){
+          const activities = JSON.parse(data.savedActivities);
+
+          if (activities){
+            const userSavedActivities = activities.map(item => {
+              if (item.id !== activityId) return item;
+              else return { id: item.id, certificate: file }
+            });
+            data = {
+              ...data,
+              savedActivities: userSavedActivities
+            }
+          }
+        } else {
+          data = {
+            ...data,
+            image: file
+          }
+        }
+      }
 
       try {
         const userUpdated = await User.findByIdAndUpdate(_id, data);

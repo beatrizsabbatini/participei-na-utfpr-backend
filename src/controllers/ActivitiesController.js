@@ -44,6 +44,7 @@ module.exports = {
     }, 
 
     async listByIds(req, res){
+      
       const { ids } = req.body; 
       let activities = await Activity.find();
 

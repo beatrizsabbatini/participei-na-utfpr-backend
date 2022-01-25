@@ -3,6 +3,7 @@ const cors = require ('cors');
 const moongose = require('mongoose');
 const path = require('path')
 const routes = require('./src/routes');
+var bodyParser = require('body-parser')
 
 const app = express();
 require('dotenv').config();
@@ -22,11 +23,11 @@ moongose.connect(MONGO_URL,{
     }
 })
 
-app.use(cors()); //informar qual dominio pode consumir o dado da api
+app.use(cors());
 
 app.use(express.json());
 
-app.use('/files', express.static(path.resolve(__dirname, 'uploads')))
+app.use('/files', express.static(path.resolve(__dirname, 'tmp', 'uploads')))
 
 app.use(routes);
 

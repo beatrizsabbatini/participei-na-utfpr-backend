@@ -18,16 +18,42 @@ const UserSchema = new mongoose.Schema({
       required: true,
     },
     image: {
-      type: String,
-      required: false,
+      name: {
+        type: String,
+        required: true,
+      },
+      key: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      }
     },
     publishedActivitiesIds: {
       type: [String],
       required: false,
     },
-    savedActivitiesIds: {
-      type: [String],
-      required: false,
+    savedActivities: {
+      id:{
+        type: String,
+        required: true,
+      },
+      certificate: {
+        name: {
+          type: String,
+          required: false,
+        },
+        key: {
+          type: String,
+          required: false,
+        },
+        url: {
+          type: String,
+          required: false,
+        }
+      },
     },
     group1Points: {
       type: Number,
@@ -42,6 +68,7 @@ const UserSchema = new mongoose.Schema({
       required: false,
     },
 });
+
 
 const user = mongoose.model('User', UserSchema);
 module.exports = user;
