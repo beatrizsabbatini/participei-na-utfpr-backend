@@ -20,15 +20,15 @@ const UserSchema = new mongoose.Schema({
     image: {
       name: {
         type: String,
-        required: true,
+        required: false,
       },
       key: {
         type: String,
-        required: true,
+        required: false,
       },
       url: {
         type: String,
-        required: true,
+        required: false,
       }
     },
     publishedActivitiesIds: {
