@@ -17,7 +17,6 @@ routes.post('/activities', Activity.listByIds);
 
 routes.post('/user', User.create);
 routes.patch('/users', multer(uploadConfig).single('file'), User.update);
-routes.delete('/users', User.delete);
 
 routes.get('/user',User.find);
 routes.get('/users', User.list);
