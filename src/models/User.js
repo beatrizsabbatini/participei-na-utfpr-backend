@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
     savedActivities: {
       id:{
         type: String,
-        required: true,
+        required: false,
       },
       certificate: {
         name: {
