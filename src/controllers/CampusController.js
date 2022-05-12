@@ -15,13 +15,30 @@ module.exports = {
     return res.json(campusItem)
   }, 
 
-    async list(req, res){
+  async list(req, res){
 
-      try {
-        const campuses = await Campus.find();
-        return res.json(campuses); 
-      } catch (error) {
-        return res.status(400).send({message: "Erro ao excluir!"})
-      }
-    }, 
-  }
+    console.log('entrou no list campuses!')
+
+    try {
+      const campuses = await Campus.find();
+      return res.json(campuses); 
+    } catch (error) {
+      return res.status(400).send({message: "Erro ao listar!"})
+    }
+  }, 
+
+  async update(req, res){
+    const { _id } = req.query;
+
+    let data = req.body;
+
+    try {
+      const campusUpdated = await Campus.findByIdAndUpdate(_id, data);
+
+      return res.json(campusUpdated)
+    } catch (error) {
+      return res.json(error);
+    }
+    
+  }, 
+}

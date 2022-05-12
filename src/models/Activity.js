@@ -31,8 +31,8 @@ const ActivitySchema = new mongoose.Schema({
       type: String,
       required: false,
     },
-    images: {
-      type: [String],
+    image: {
+      type: String,
       required: false,
     }
 });

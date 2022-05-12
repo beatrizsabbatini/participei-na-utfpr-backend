@@ -9,6 +9,10 @@ const CampusSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    departments: {
+      type: Array,
+      required: true
+    }
 });
 
 const campus = mongoose.model('Campus', CampusSchema);
