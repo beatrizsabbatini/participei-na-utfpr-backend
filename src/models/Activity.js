@@ -34,6 +34,10 @@ const ActivitySchema = new mongoose.Schema({
     image: {
       type: String,
       required: false,
+    },
+    hidden: {
+      type: Boolean,
+      required: false
     }
 });
 
