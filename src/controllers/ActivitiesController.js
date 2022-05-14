@@ -70,11 +70,12 @@ module.exports = {
       const data = req.body;
 
       try {
-        const activityUpdated = await Activity.findOneAndUpdate(({id}, data));
+        const activityUpdated = await Activity.updateOne({ id }, data);
 
         return res.json(activityUpdated)
       } catch (error) {
-        return res.json(error)
+        console.log("Error updating", error)
+        return res.status(500).json({ error: 'An unknown error occurred.' });
       }
     }
 

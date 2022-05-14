@@ -44,7 +44,7 @@ module.exports = {
       }
 
       try {
-        const userUpdated = await User.findByIdAndUpdate(_id, data);
+        const userUpdated = await User.updateOne({ _id }, data);
 
         return res.json(userUpdated)
       } catch (error) {

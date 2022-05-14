@@ -34,7 +34,7 @@ module.exports = {
   async update(req, res){
     const data = req.body;
     try {
-      const categoryUpdated = await Category.findOneAndUpdate(({id: data.id}, data));
+      const categoryUpdated = await Category.updateOne(({id: data.id}, data));
 
       return res.json(categoryUpdated)
     } catch (error) {
@@ -44,8 +44,6 @@ module.exports = {
 
   async delete(req, res){
     const { id } = req.query;
-
-    console.log("CATEGORY ID: ", id)
 
     try {
       await Category.findByIdAndDelete(id);
