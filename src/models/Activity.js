@@ -11,7 +11,7 @@ const ActivitySchema = new mongoose.Schema({
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
     publisherId: {
       type: String,
