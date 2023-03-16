@@ -40,6 +40,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false,
       },
+      participated: {
+        type: Boolean,
+        required: false,
+      },
       certificate: {
         name: {
           type: String,

@@ -28,8 +28,18 @@ const ActivitySchema = new mongoose.Schema({
       points: { type: Number, required: true }
     },
     certificate: {
-      type: String,
-      required: false,
+      name: {
+        type: String,
+        required: false,
+      },
+      key: {
+        type: String,
+        required: false,
+      },
+      url: {
+        type: String,
+        required: false,
+      }
     },
     image: {
       type: String,

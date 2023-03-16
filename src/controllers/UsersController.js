@@ -10,7 +10,8 @@ module.exports = {
     }, 
 
     async update(req, res){
-      const { _id, activityId } = req.query;
+
+      const { _id, activityId, participated } = req.query;
 
       let data = req.body;
 
@@ -22,23 +23,28 @@ module.exports = {
           url
         }
 
-        if (activityId){
-          const activities = JSON.parse(data.savedActivities);
+        if (!activityId){
+          data = {
+            ...data,
+            image: file
+          }
+        }
+      }
 
+      if (participated){
+        if (activityId){
+          const activities = data.savedActivities;
           if (activities){
             const userSavedActivities = activities.map(item => {
               if (item.id !== activityId) return item;
-              else return { id: item.id, certificate: file }
+              else {
+                return { id: item.id, participated: participated === 'false' ? false : true } //certificate: file
+              }
             });
             data = {
               ...data,
               savedActivities: userSavedActivities
             }
-          }
-        } else {
-          data = {
-            ...data,
-            image: file
           }
         }
       }

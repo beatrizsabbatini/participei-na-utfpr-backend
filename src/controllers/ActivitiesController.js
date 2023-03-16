@@ -61,7 +61,6 @@ module.exports = {
         activities = []
       }
 
-
       return res.json(activities);
     }, 
 
