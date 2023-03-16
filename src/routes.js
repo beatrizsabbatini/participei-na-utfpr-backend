@@ -32,4 +32,11 @@ routes.get('/categories', Category.list)
 routes.patch('/categories', Category.update)
 routes.delete('/categories', Category.delete)
 
+routes.get('/', (req, res) => {
+  return res.json({
+    success: 'true',
+    message: 'sucesso!'
+  })
+});
+
 module.exports = routes;
