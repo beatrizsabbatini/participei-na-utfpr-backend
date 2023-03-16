@@ -31,7 +31,7 @@ app.use('/files', express.static(path.resolve(__dirname, 'tmp', 'uploads')))
 
 app.use(routes);
 
-const porta = process.env.PORT || 3333;
+const porta = 3333;
 
 app.listen(porta);
 
